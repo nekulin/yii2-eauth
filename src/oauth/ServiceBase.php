@@ -277,4 +277,12 @@ abstract class ServiceBase extends \nodge\eauth\ServiceBase implements IAuthServ
 	{
 		return isset($data['error']) ? $data['error'] : null;
 	}
+
+	public function getAuthenticationUrl()
+	{
+		$proxy = $this->getProxy();
+		/** @var $url Uri */
+		$url = $proxy->getAuthorizationUri();
+		return $url->getAbsoluteUri();
+	}
 }
